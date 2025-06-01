@@ -8,7 +8,7 @@ export function Router() {
   return useRoutes([
     {
       path: "/",
-      element: <Navigate to={PATH_DASH.dashboard} />,
+      element: <Navigate to={PATH_DASH.navbars} />,
     },
     {
       element: <Outlet />,
