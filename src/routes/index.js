@@ -1,9 +1,6 @@
 import { Navigate, Outlet, useRoutes } from "react-router-dom";
-
-
-
 import { PATH_DASH } from "./path";
-
+import Navbars from "../modules/nav/navbar";
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +15,7 @@ export function Router() {
       children: [
         {
           path: PATH_DASH.root,
-          element: <Navbars />,
+          element: <Navbars/>,
           children: [
             
           ],
