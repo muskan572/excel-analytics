@@ -1,9 +1,100 @@
-import { Stack, Typography } from "@mui/material";
-
+import { Box, Button, Stack, useTheme, Typography } from "@mui/material";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import PersonIcon from "@mui/icons-material/Person";
 export default function Navbars() {
+  const [input, setInput] = useState("");
+  const theme = useTheme();
+
   return (
-    <Stack>
-        <Typography>Navbar section</Typography>
-    </Stack>
+    <>
+      <Box sx={{ display: "flex", height: "100vh" }}>
+        {/* Sidebar - 20% */}
+        <Box
+          sx={{
+            width: "20%",
+            bgcolor: "#235347",
+            borderRadius: "20px",
+            margin: 2,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* Add your vertical nav content here */}
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{
+              marginTop: 2,
+              backgroundColor: "transparent",
+              color: "#FFFFFF",
+              width: "80%",
+              borderRadius: "25px",
+              "&:hover": {
+                backgroundColor: "#8EB69B",
+                color: "#235347",
+              },
+            }}
+          >
+            Dashboard
+          </Button>
+        </Box>
+
+        {/* Main Content - 80% */}
+        <Box sx={{ width: "80%", padding: 2 }}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ margin: 1 }}
+          >
+            {/* Search */}
+            <Stack sx={{ display: { xs: "none", md: "block" } }}>
+              <Button
+                variant="contained"
+                startIcon={<SearchIcon />}
+                sx={{
+                  backgroundColor: "#CECECE",
+                  borderRadius: "10px",
+                  color: theme.palette.grey[900],
+                  width: "170px",
+                }}
+                disableElevation
+                disableRipple
+              >
+                <input
+                  type="text"
+                  placeholder="Search Here"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    outline: "none",
+                    width: "90px",
+                    color: theme.palette.grey[100],
+                  }}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+              </Button>
+            </Stack>
+
+            {/* LogIn */}
+            <Stack>
+              <Button
+                endIcon={<PersonIcon />}
+                sx={{ color: "#000000", background: "transparent" }}
+              >
+                <Typography>LogIn</Typography>
+              </Button>
+            </Stack>
+          </Stack>
+
+          {/* Main section content below if needed */}
+          <Outlet />
+        </Box>
+      </Box>
+    </>
   );
 }
