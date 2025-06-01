@@ -8,7 +8,7 @@ export default function Navbars() {
         <Typography variant="h4">Navbar section</Typography>
         
     </Stack>
-          <Outlet />
+    <Outlet />
 
  </> 
  );

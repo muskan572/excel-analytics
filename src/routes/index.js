@@ -12,7 +12,7 @@ export function Router() {
   return useRoutes([
     {
       path: "/",
-      element: <Navigate to={PATH_DASH.navbars} />,
+      element: <Navigate to={PATH_DASH.root} />,
     },
     {
       element: <Outlet />,
