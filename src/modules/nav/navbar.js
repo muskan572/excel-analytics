@@ -1,4 +1,4 @@
-import { Box, Grid, Button, Stack, useTheme, Typography } from "@mui/material";
+import { Box, Button, Stack, useTheme, Typography } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -23,6 +23,23 @@ export default function Navbars() {
           }}
         >
           {/* Add your vertical nav content here */}
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{
+              marginTop: 2,
+              backgroundColor: "transparent",
+              color: "#FFFFFF",
+              width: "80%",
+              borderRadius: "25px",
+              "&:hover": {
+                backgroundColor: "#8EB69B",
+                color: "#235347",
+              },
+            }}
+          >
+            Dashboard
+          </Button>
         </Box>
 
         {/* Main Content - 80% */}
