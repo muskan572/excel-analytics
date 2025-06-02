@@ -1,9 +1,11 @@
 import { Box, Button, Stack, useTheme, Typography } from "@mui/material";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
 import { Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import Dashboard from "../dashboard/dashboard";
+
 export default function Navbars() {
   const [input, setInput] = useState("");
   const theme = useTheme();
@@ -60,32 +62,43 @@ export default function Navbars() {
             Excel Analytics
           </Button>
           {/* Add your vertical nav content here */}
-          {buttonNames.map((button, index) => (
-            <Button
-              variant="contained"
-              startIcon={
-                <img
-                  src={button.image}
-                  alt={button.name}
-                  style={{ width: 24, height: 24 }}
-                />
-              }
-              disableElevation
-              sx={{
-                marginTop: 2,
-                backgroundColor: "transparent",
-                color: "#FFFFFF",
-                borderRadius: "25px",
-                "&:hover": {
-                  backgroundColor: "#8EB69B",
-                  color: "#235347",
-                },
-              }}
-            >
-              {button.name}
-              {index === buttonNames.length - 1 ? "" : <br />}
-            </Button>
-          ))}
+          {buttonNames.map((button, index) => {
+            const route = `/${button.name
+              .toLowerCase()
+              .replace(/ & /g, "-")
+              .replace(/\s+/g, "-")}`;
+            return (
+              <Button
+                key={index}
+                component={NavLink}
+                to={route}
+                startIcon={
+                  <img
+                    src={button.image}
+                    alt={button.name}
+                    style={{ width: 24, height: 24 }}
+                  />
+                }
+                disableElevation
+                sx={{
+                  marginTop: 2,
+                  backgroundColor: "transparent",
+                  color: "#FFFFFF",
+                  borderRadius: "25px",
+                  "&.active": {
+                    backgroundColor: "#8EB69B",
+                    color: "#235347",
+                  },
+                  "&:hover": {
+                    backgroundColor: "#8EB69B",
+                    color: "#235347",
+                  },
+                }}
+              >
+                {button.name}
+              </Button>
+            );
+          })}
           ;
         </Box>
 
@@ -137,7 +150,6 @@ export default function Navbars() {
               </Button>
             </Stack>
           </Stack>
-          <Dashboard />
 
           {/* Main section content below if needed */}
           <Outlet />
