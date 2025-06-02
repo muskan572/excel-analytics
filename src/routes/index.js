@@ -1,9 +1,7 @@
 import { Navigate, Outlet, useRoutes } from "react-router-dom";
 
-
-
 import { PATH_DASH } from "./path";
-
+import Finance from "../modules/finance/finance";
 
 // ----------------------------------------------------------------------
 
@@ -19,9 +17,7 @@ export function Router() {
         {
           path: PATH_DASH.root,
           element: <Navbars />,
-          children: [
-            
-          ],
+          children: [{ path: PATH_DASH.finance, element: <Finance /> }],
         },
       ],
     },
