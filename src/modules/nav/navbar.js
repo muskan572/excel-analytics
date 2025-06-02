@@ -6,7 +6,17 @@ import PersonIcon from "@mui/icons-material/Person";
 export default function Navbars() {
   const [input, setInput] = useState("");
   const theme = useTheme();
-
+  const buttonNames = [
+    { name: "Dashboard", image: "/assets/images/Slice.png" },
+    { name: "Finance", image: "/assets/images/Invoice.png" },
+    { name: "Orders", image: "/assets/images/Shopping Cart.png" },
+    { name: "Products", image: "/assets/images/Basket.png" },
+    { name: "Sales", image: "/assets/images/Profitability.png" },
+    { name: "Users", image: "/assets/images/User Account.png" },
+    { name: "Report", image: "/assets/images/Document.png" },
+    { name: "Help & Support", image: "/assets/images/Help.png" },
+    { name: "Settings", image: "/assets/images/Settings.png" },
+  ];
   return (
     <>
       <Box sx={{ display: "flex", height: "100vh" }}>
@@ -22,24 +32,55 @@ export default function Navbars() {
             alignItems: "center",
           }}
         >
-          {/* Add your vertical nav content here */}
           <Button
-            variant="contained"
             disableElevation
+            disableFocusRipple
+            disableRipple
+            disableTouchRipple
             sx={{
-              marginTop: 2,
-              backgroundColor: "transparent",
+              margin: 3,
+              fontSize: "1.5rem",
               color: "#FFFFFF",
-              width: "80%",
-              borderRadius: "25px",
-              "&:hover": {
-                backgroundColor: "#8EB69B",
-                color: "#235347",
-              },
+              backgroundColor: "transparent",
             }}
+            endIcon={
+              <img
+                src="/assets/images/Positive Dynamic.png"
+                alt="Logo"
+                style={{ width: 50, height: 40 }}
+              />
+            }
           >
-            Dashboard
+            Excel Analytics
           </Button>
+          {/* Add your vertical nav content here */}
+          {buttonNames.map((button, index) => (
+            <Button
+              variant="contained"
+              startIcon={
+                <img
+                  src={button.image}
+                  alt={button.name}
+                  style={{ width: 24, height: 24 }}
+                />
+              }
+              disableElevation
+              sx={{
+                marginTop: 2,
+                backgroundColor: "transparent",
+                color: "#FFFFFF",
+                borderRadius: "25px",
+                "&:hover": {
+                  backgroundColor: "#8EB69B",
+                  color: "#235347",
+                },
+              }}
+            >
+              {button.name}
+              {index === buttonNames.length - 1 ? "" : <br />}
+            </Button>
+          ))}
+          ;
         </Box>
 
         {/* Main Content - 80% */}
