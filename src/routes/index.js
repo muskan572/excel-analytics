@@ -5,8 +5,6 @@ import { PATH_DASH } from "./path";
 import Dashboard from "../modules/dashboard/dashboard";
 import Navbars from "../modules/nav/navbar";
 
-
-
 // ----------------------------------------------------------------------
 
 export function Router() {
@@ -23,14 +21,6 @@ export function Router() {
           element: <Navbars />,
 
           children: [{ path: PATH_DASH.dashboard, element: <Dashboard /> }],
-
-          children: [
-            {
-              path: "navbars", // matches /dashboard/navbars
-              
-            },
-          ],
-
         },
       ],
     },

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
+import Dashboard from "../dashboard/dashboard";
 export default function Navbars() {
   const [input, setInput] = useState("");
   const theme = useTheme();
@@ -27,9 +28,14 @@ export default function Navbars() {
             bgcolor: "#235347",
             borderRadius: "20px",
             margin: 2,
+            height: "100vh",
+            position: "fixed", // Make it fixed
+            left: 0,
+            top: 0,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            zIndex: 1000, // Optional: keeps it on top
           }}
         >
           <Button
@@ -84,7 +90,7 @@ export default function Navbars() {
         </Box>
 
         {/* Main Content - 80% */}
-        <Box sx={{ width: "80%", padding: 2 }}>
+        <Box sx={{ width: "80%", padding: 2, marginLeft: "20%" }}>
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -131,6 +137,7 @@ export default function Navbars() {
               </Button>
             </Stack>
           </Stack>
+          <Dashboard />
 
           {/* Main section content below if needed */}
           <Outlet />
