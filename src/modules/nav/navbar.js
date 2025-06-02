@@ -1,8 +1,11 @@
 import { Box, Button, Stack, useTheme, Typography } from "@mui/material";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
 import { Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
+
 export default function Navbars() {
   const [input, setInput] = useState("");
   const theme = useTheme();
@@ -27,9 +30,14 @@ export default function Navbars() {
             bgcolor: "#235347",
             borderRadius: "20px",
             margin: 2,
+            height: "100vh",
+            position: "fixed", // Make it fixed
+            left: 0,
+            top: 0,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            zIndex: 1000, // Optional: keeps it on top
           }}
         >
           <Button
@@ -54,37 +62,48 @@ export default function Navbars() {
             Excel Analytics
           </Button>
           {/* Add your vertical nav content here */}
-          {buttonNames.map((button, index) => (
-            <Button
-              variant="contained"
-              startIcon={
-                <img
-                  src={button.image}
-                  alt={button.name}
-                  style={{ width: 24, height: 24 }}
-                />
-              }
-              disableElevation
-              sx={{
-                marginTop: 2,
-                backgroundColor: "transparent",
-                color: "#FFFFFF",
-                borderRadius: "25px",
-                "&:hover": {
-                  backgroundColor: "#8EB69B",
-                  color: "#235347",
-                },
-              }}
-            >
-              {button.name}
-              {index === buttonNames.length - 1 ? "" : <br />}
-            </Button>
-          ))}
+          {buttonNames.map((button, index) => {
+            const route = `/${button.name
+              .toLowerCase()
+              .replace(/ & /g, "-")
+              .replace(/\s+/g, "-")}`;
+            return (
+              <Button
+                key={index}
+                component={NavLink}
+                to={route}
+                startIcon={
+                  <img
+                    src={button.image}
+                    alt={button.name}
+                    style={{ width: 24, height: 24 }}
+                  />
+                }
+                disableElevation
+                sx={{
+                  marginTop: 2,
+                  backgroundColor: "transparent",
+                  color: "#FFFFFF",
+                  borderRadius: "25px",
+                  "&.active": {
+                    backgroundColor: "#8EB69B",
+                    color: "#235347",
+                  },
+                  "&:hover": {
+                    backgroundColor: "#8EB69B",
+                    color: "#235347",
+                  },
+                }}
+              >
+                {button.name}
+              </Button>
+            );
+          })}
           ;
         </Box>
 
         {/* Main Content - 80% */}
-        <Box sx={{ width: "80%", padding: 2 }}>
+        <Box sx={{ width: "80%", padding: 2, marginLeft: "20%" }}>
           <Stack
             direction="row"
             justifyContent="space-between"
