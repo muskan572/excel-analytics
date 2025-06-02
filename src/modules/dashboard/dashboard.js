@@ -43,7 +43,7 @@ const pieData = [
   { name: "Wounds", value: 20 },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#0B2B26", "#8EB69B", "#163832", "#235347"];
 
 const productRows = [
   {
@@ -134,7 +134,7 @@ export default function Dashboard() {
               <Line
                 type="monotone"
                 dataKey="sales"
-                stroke="#8884d8"
+                stroke="#8EB69B"
                 strokeWidth={2}
               />
             </LineChart>
