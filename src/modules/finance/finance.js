@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 
 const financeSummary = [
-  { label: "Total Revenue", value: "₹12,50,000", color: "#8EB69B" },
-  { label: "Expenses", value: "₹5,75,000", color: "#FFB74D" },
-  { label: "Profit", value: "₹6,75,000", color: "#81C784" },
-  { label: "Outstanding", value: "₹1,25,000", color: "#E57373" },
+  { label: "Total Revenue", value: "₹12,50,000", color: "#6B9080" },
+  { label: "Expenses", value: "₹5,75,000", color: "#8EB69B" },
+  { label: "Profit", value: "₹6,75,000", color: "#A4C3B2" },
+  { label: "Outstanding", value: "₹1,25,000", color: "#CCE3DE" },
 ];
 
 const transactions = [
@@ -50,7 +50,7 @@ const transactions = [
 
 export default function Finance() {
   return (
-    <Box>
+    <Box margin={3}>
       {/* Page Header */}
       <Typography
         variant="h4"

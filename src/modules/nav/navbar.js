@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
+import { PATH_DASH } from "../../routes/path";
 
 export default function Navbars() {
   const [input, setInput] = useState("");
@@ -63,15 +64,16 @@ export default function Navbars() {
           </Button>
           {/* Add your vertical nav content here */}
           {buttonNames.map((button, index) => {
-            const route = `/${button.name
-              .toLowerCase()
-              .replace(/ & /g, "-")
-              .replace(/\s+/g, "-")}`;
+            const pathMap = {
+              Dashboard: PATH_DASH.dashboard,
+              Finance: PATH_DASH.finance,
+              // add others here...
+            };
             return (
               <Button
                 key={index}
                 component={NavLink}
-                to={route}
+                to={pathMap[button.name] || "/"}
                 startIcon={
                   <img
                     src={button.image}
