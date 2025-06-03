@@ -67,6 +67,7 @@ export default function Navbars() {
             const pathMap = {
               Dashboard: PATH_DASH.dashboard,
               Finance: PATH_DASH.finance,
+              Orders: PATH_DASH.orders,
               // add others here...
             };
             return (
