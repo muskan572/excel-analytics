@@ -3,7 +3,6 @@ import {
   Grid,
   Paper,
   Typography,
-  useTheme,
   Table,
   TableHead,
   TableRow,
@@ -50,8 +49,6 @@ const transactions = [
 ];
 
 export default function Finance() {
-  const theme = useTheme();
-
   return (
     <Box>
       {/* Page Header */}
