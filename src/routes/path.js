@@ -3,5 +3,4 @@ export const PATH_DASH = {
   orders: "/dashboard/orders",
   dashboard: "/dashboard/dashboard",
   finance: "/dashboard/finance",
-
 };
