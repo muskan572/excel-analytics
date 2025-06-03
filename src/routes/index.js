@@ -1,39 +1,29 @@
-import { Navigate, Outlet, useRoutes } from "react-router-dom";
-
-
+import { Navigate, useRoutes } from "react-router-dom";
 import { PATH_DASH } from "./path";
-import Finance from "../modules/finance/finance";
 
 import Dashboard from "../modules/dashboard/dashboard";
+import Finance from "../modules/finance/finance";
 import Navbars from "../modules/nav/navbar";
-
-
-// ----------------------------------------------------------------------
 
 export function Router() {
   return useRoutes([
     {
       path: "/",
-      element: <Navigate to="/dashboard" />,
+      element: <Navigate to={PATH_DASH.dashboard} />,
     },
     {
-      element: <Outlet />,
+      path: PATH_DASH.root, // '/dashboard'
+      element: <Navbars />, // This layout contains <Outlet />
       children: [
         {
-          path: "/dashboard",
-          element: <Navbars />,
-
-          children: [{ path: PATH_DASH.finance, element: <Finance /> }],
-
-
-          children: [
-            {
-              index: true, // 👈 Important to show Dashboard at /dashboard
-              element: <Dashboard />,
-            },
-          ],
-
+          path: "dashboard", // Final path: /dashboard/dashboard
+          element: <Dashboard />,
         },
+        {
+          path: "finance", // Final path: /dashboard/finance
+          element: <Finance />,
+        },
+        // add more children here
       ],
     },
   ]);
